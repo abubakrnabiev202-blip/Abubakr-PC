@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abubakr — сборка и подбор компьютеров</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f6f1e7;
+  --card: #fffdf8;
+  --ink: #1d1b17;
+  --dim: #6b665b;
+  --acc: #ff5a1f;
+  --line: #e0d8c7;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: auto;
+  padding: 0 22px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.logo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.logo span { color: var(--acc); }
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--dim);
+}
+
+nav a:hover { color: var(--acc); }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 65px 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  line-height: 1.1;
+}
+
+h1 span {
+  color: var(--acc);
+}
+
+.lead {
+  color: var(--dim);
+  font-size: 1.08rem;
+  max-width: 520px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--acc);
+  color: white;
+  padding: 13px 25px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px #ff5a1f44;
+}
+
+.pc {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 45px 20px;
+  text-align: center;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.fan {
+  width: 100px;
+  height: 100px;
+  margin: auto auto 20px;
+  border: 5px solid var(--acc);
+  border-radius: 50%;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+section { padding: 55px 0; }
+
+.sub {
+  color: var(--dim);
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 25px;
+  transition: .2s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.tag { color: var(--acc); font-size: .9rem; }
+
+.card ul {
+  padding-left: 20px;
+  color: var(--dim);
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.step {
+  border-top: 3px solid var(--ink);
+  padding-top: 15px;
+}
+
+.step b { display: block; }
+
+.step p {
+  color: var(--dim);
+  font-size: .92rem;
+}
+
+.contact {
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  padding: 45px 25px;
+  border-radius: 18px;
+}
+
+.contact p { color: #ccc; }
+
+footer {
+  padding: 30px 0;
+  color: var(--dim);
+  font-size: .9rem;
+}
+
+@media(max-width:800px) {
+  .hero, .cards { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  nav { display: none; }
+  .pc { order: -1; }
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">Abubakr<span>.</span>ПК</div>
+  <nav>
+    <a href="#builds">Компьютеры</a>
+    <a href="#how">Как работаю</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Помогу собрать <span>хороший ПК</span> под твои задачи</h1>
+
+    <p class="lead">
+      Привет! Меня зовут Abubakr. Я занимаюсь подбором компьютерных комплектующих
+      и сборкой ПК. Помогу выбрать детали так, чтобы компьютер хорошо справлялся
+      с нужными задачами и не приходилось переплачивать за ненужные характеристики.
+    </p>
+
+    <a class="btn" href="#contact">Обсудить сборку</a>
+  </div>
+
+  <div class="pc">
+    <div class="fan"></div>
+    <h3>Твой будущий компьютер</h3>
+    <p>Подберём комплектующие вместе 💻</p>
+  </div>
+</div>
+
+<section id="builds">
+  <h2>Примеры компьютерных сборок</h2>
+  <p class="sub">
+    Несколько вариантов для разных задач. Комплектующие и стоимость
+    можно изменить под твой бюджет.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <span class="tag">Для учёбы и работы</span>
+      <h3>Базовый ПК</h3>
+      <ul>
+        <li>Ryzen 5 5600</li>
+        <li>16 ГБ DDR4</li>
+        <li>SSD 512 ГБ</li>
+        <li>Тихое охлаждение</li>
+      </ul>
+      <div class="price">От $480</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Для игр</span>
+      <h3>Игровой ПК</h3>
+      <ul>
+        <li>Ryzen 5 7600</li>
+        <li>RTX 4060 8 ГБ</li>
+        <li>32 ГБ DDR5</li>
+        <li>SSD 1 ТБ</li>
+      </ul>
+      <div class="price">От $890</div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Для серьёзных задач</span>
+      <h3>Мощный ПК</h3>
+      <ul>
+        <li>Ryzen 7 7700X</li>
+        <li>RTX 4070 Super</li>
+        <li>64 ГБ DDR5</li>
+        <li>SSD 2 ТБ</li>
+      </ul>
+      <div class="price">От $1450</div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>Как всё будет происходить?</h2>
+  <p class="sub">Всё просто, без лишней сложности.</p>
+
+  <div class="steps">
+    <div class="step">
+      <b>1. Обсудим задачу</b>
+      <p>Расскажешь, для чего нужен компьютер и сколько планируешь потратить.</p>
+    </div>
+
+    <div class="step">
+      <b>2. Выберем детали</b>
+      <p>Я подготовлю список комплектующих и объясню, почему выбрал именно их.</p>
+    </div>
+
+    <div class="step">
+      <b>3. Соберём компьютер</b>
+      <p>После согласования можно переходить к сборке и проверке комплектующих.</p>
+    </div>
+
+    <div class="step">
+      <b>4. Проверим результат</b>
+      <p>Убедимся, что компьютер работает правильно и готов к использованию.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>Есть вопросы или нужна помощь?</h2>
+    <p>
+      Напиши мне. Обсудим твои задачи, бюджет и подумаем,
+      какой компьютер лучше всего подойдёт.
+    </p>
+    <a class="btn" href="https://t.me/@Abubakr_0206">
+      Написать в Telegram
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Abubakr ПК. Сделано с интересом к компьютерам ❤️
+</footer>
+
+</div>
+</body>
+</html>
