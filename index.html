@@ -1,327 +1,1114 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abubakr — сборка и подбор компьютеров</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ee">
 
-<style>
-:root {
-  --bg: #f6f1e7;
-  --card: #fffdf8;
-  --ink: #1d1b17;
-  --dim: #6b665b;
-  --acc: #ff5a1f;
-  --line: #e0d8c7;
-}
+    <meta name="description" content="Помогу подобрать компьютер для игр, учёбы и работы. Комплектующие под твои задачи и бюджет.">
 
-* { box-sizing: border-box; }
+    <title>Abubakr PC — Подбор компьютеров</title>
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Manrope', sans-serif;
-  line-height: 1.6;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.wrap {
-  max-width: 1040px;
-  margin: auto;
-  padding: 0 22px;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 0;
-}
+    <style>
+        :root {
+            --background: #f5f3ee;
+            --white: #ffffff;
+            --dark: #191b24;
+            --gray: #777985;
+            --orange: #ff602e;
+            --orange-hover: #e94b1b;
+            --border: #e7e3da;
+            --radius: 18px;
+        }
 
-.logo {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.logo span { color: var(--acc); }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
 
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: var(--dim);
-}
+        body {
+            margin: 0;
+            font-family: 'Manrope', Arial, sans-serif;
+            background: var(--background);
+            color: var(--dark);
+            line-height: 1.65;
+        }
 
-nav a:hover { color: var(--acc); }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  align-items: center;
-  padding: 65px 0;
-}
+        button, input, select, textarea {
+            font: inherit;
+        }
 
-h1, h2, h3 {
-  font-family: 'Bricolage Grotesque', sans-serif;
-}
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
 
-h1 {
-  font-size: clamp(2.3rem, 5vw, 3.8rem);
-  line-height: 1.1;
-}
+        /* Шапка сайта */
 
-h1 span {
-  color: var(--acc);
-}
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(245, 243, 238, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
 
-.lead {
-  color: var(--dim);
-  font-size: 1.08rem;
-  max-width: 520px;
-}
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.btn {
-  display: inline-block;
-  background: var(--acc);
-  color: white;
-  padding: 13px 25px;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: .2s;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px #ff5a1f44;
-}
+        .logo span {
+            color: var(--orange);
+        }
 
-.pc {
-  background: var(--card);
-  border: 2px solid var(--ink);
-  border-radius: 18px;
-  padding: 45px 20px;
-  text-align: center;
-  box-shadow: 8px 8px 0 var(--ink);
-}
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
 
-.fan {
-  width: 100px;
-  height: 100px;
-  margin: auto auto 20px;
-  border: 5px solid var(--acc);
-  border-radius: 50%;
-  animation: spin 5s linear infinite;
-}
+        .nav-links a {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+        .nav-links a:hover {
+            color: var(--orange);
+        }
 
-section { padding: 55px 0; }
+        .menu-button {
+            display: none;
+            padding: 9px 13px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-.sub {
-  color: var(--dim);
-  margin-bottom: 30px;
-}
+        /* Кнопки */
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 22px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--orange);
+            color: white;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 25px;
-  transition: .2s;
-}
+        .button:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+        }
 
-.card:hover { transform: translateY(-5px); }
+        .button-light {
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
 
-.tag { color: var(--acc); font-size: .9rem; }
+        .button-light:hover {
+            background: #f1eee8;
+            color: var(--dark);
+        }
 
-.card ul {
-  padding-left: 20px;
-  color: var(--dim);
-}
+        /* Главный экран */
 
-.price {
-  font-size: 1.8rem;
-  font-weight: 800;
-  font-family: 'Bricolage Grotesque', sans-serif;
-}
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+            padding: 80px 0;
+        }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
+        .small-title {
+            color: var(--orange-hover);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.step {
-  border-top: 3px solid var(--ink);
-  padding-top: 15px;
-}
+        h1 {
+            margin: 18px 0;
+            font-size: clamp(40px, 5vw, 66px);
+            line-height: 1.12;
+            letter-spacing: -3px;
+        }
 
-.step b { display: block; }
+        h1 span {
+            color: var(--orange);
+        }
 
-.step p {
-  color: var(--dim);
-  font-size: .92rem;
-}
+        .hero-text {
+            max-width: 550px;
+            color: var(--gray);
+            font-size: 16px;
+        }
 
-.contact {
-  background: var(--ink);
-  color: white;
-  text-align: center;
-  padding: 45px 25px;
-  border-radius: 18px;
-}
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
 
-.contact p { color: #ccc; }
+        .hero-image {
+            position: relative;
+        }
 
-footer {
-  padding: 30px 0;
-  color: var(--dim);
-  font-size: .9rem;
-}
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: 410px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
 
-@media(max-width:800px) {
-  .hero, .cards { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr 1fr; }
-  nav { display: none; }
-  .pc { order: -1; }
-}
-</style>
+        .image-note {
+            position: absolute;
+            left: -20px;
+            bottom: 22px;
+            max-width: 250px;
+            padding: 17px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px #00000015;
+            font-weight: 800;
+        }
+
+        .image-note small {
+            display: block;
+            margin-top: 5px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Общие настройки секций */
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        h2 {
+            margin: 10px 0;
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.2;
+            letter-spacing: -1.8px;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+        }
+
+        /* Компьютерные сборки */
+
+        .builds {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .build-card {
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: 0.25s;
+        }
+
+        .build-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px #00000010;
+        }
+
+        .build-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .build-content {
+            padding: 23px;
+        }
+
+        .build-type {
+            color: var(--orange-hover);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .build-card h3 {
+            margin: 8px 0 12px;
+            font-size: 22px;
+        }
+
+        .specs {
+            padding-left: 20px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .price {
+            margin-top: 18px;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .notice {
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        /* Как я работаю */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+
+        .step {
+            padding: 22px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .step-number {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            background: #fff0e9;
+            color: var(--orange-hover);
+            font-weight: 800;
+        }
+
+        .step h3 {
+            font-size: 17px;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Обо мне */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 22px;
+        }
+
+        .about-text p {
+            color: var(--gray);
+        }
+
+        .advantages {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .advantage {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .advantage::before {
+            content: "✓";
+            margin-right: 8px;
+            color: #20a66c;
+        }
+
+        /* Контакты */
+
+        .contact {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 35px;
+            padding: 38px;
+            background: var(--dark);
+            color: white;
+            border-radius: 25px;
+        }
+
+        .contact p {
+            color: #c2c4cb;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 13px;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            color: white;
+            background: #252833;
+            border: 1px solid #41434d;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--orange);
+        }
+
+        .contact-form select option {
+            color: white;
+            background: #252833;
+        }
+
+        .contact-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #a4a6af;
+        }
+
+        .form-message {
+            margin: 0;
+            color: #b8bbc4;
+            font-size: 12px;
+        }
+
+        /* Подвал */
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 30px 0;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .footer a:hover {
+            color: var(--orange);
+        }
+
+        /* Появление элементов */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Телефоны и планшеты */
+
+        @media (max-width: 850px) {
+            .hero,
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                gap: 35px;
+            }
+
+            .builds {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .image-note {
+                left: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            .nav {
+                min-height: 66px;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 66px;
+                left: 14px;
+                right: 14px;
+                padding: 20px;
+                flex-direction: column;
+                gap: 17px;
+                background: white;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                box-shadow: 0 10px 30px #00000012;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hero {
+                padding: 50px 0;
+            }
+
+            h1 {
+                font-size: 43px;
+                letter-spacing: -2px;
+            }
+
+            .hero-image img {
+                height: 270px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .builds,
+            .steps,
+            .advantages {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                padding: 24px 17px;
+            }
+
+            .hero-buttons .button {
+                width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
 
-<body>
-<div class="wrap">
+<body id="top">
 
-<header>
-  <div class="logo">Abubakr<span>.</span>ПК</div>
-  <nav>
-    <a href="#builds">Компьютеры</a>
-    <a href="#how">Как работаю</a>
-    <a href="#contact">Контакты</a>
-  </nav>
-</header>
+    <!-- Шапка -->
 
-<div class="hero">
-  <div>
-    <h1>Помогу собрать <span>хороший ПК</span> под твои задачи</h1>
+    <header class="header">
+        <div class="container nav">
 
-    <p class="lead">
-      Привет! Меня зовут Abubakr. Я занимаюсь подбором компьютерных комплектующих
-      и сборкой ПК. Помогу выбрать детали так, чтобы компьютер хорошо справлялся
-      с нужными задачами и не приходилось переплачивать за ненужные характеристики.
-    </p>
+            <a href="#top" class="logo">
+                Abubakr<span>.</span>PC
+            </a>
 
-    <a class="btn" href="#contact">Обсудить сборку</a>
-  </div>
+            <button class="menu-button" id="menuButton"
+                aria-label="Открыть меню"
+                aria-expanded="false">
+                ☰
+            </button>
 
-  <div class="pc">
-    <div class="fan"></div>
-    <h3>Твой будущий компьютер</h3>
-    <p>Подберём комплектующие вместе 💻</p>
-  </div>
-</div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#builds">Сборки</a>
+                <a href="#how">Как работаю</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+            </nav>
 
-<section id="builds">
-  <h2>Примеры компьютерных сборок</h2>
-  <p class="sub">
-    Несколько вариантов для разных задач. Комплектующие и стоимость
-    можно изменить под твой бюджет.
-  </p>
+        </div>
+    </header>
 
-  <div class="cards">
-    <div class="card">
-      <span class="tag">Для учёбы и работы</span>
-      <h3>Базовый ПК</h3>
-      <ul>
-        <li>Ryzen 5 5600</li>
-        <li>16 ГБ DDR4</li>
-        <li>SSD 512 ГБ</li>
-        <li>Тихое охлаждение</li>
-      </ul>
-      <div class="price">От $480</div>
-    </div>
+    <main>
 
-    <div class="card">
-      <span class="tag">Для игр</span>
-      <h3>Игровой ПК</h3>
-      <ul>
-        <li>Ryzen 5 7600</li>
-        <li>RTX 4060 8 ГБ</li>
-        <li>32 ГБ DDR5</li>
-        <li>SSD 1 ТБ</li>
-      </ul>
-      <div class="price">От $890</div>
-    </div>
+        <!-- Главная страница -->
 
-    <div class="card">
-      <span class="tag">Для серьёзных задач</span>
-      <h3>Мощный ПК</h3>
-      <ul>
-        <li>Ryzen 7 7700X</li>
-        <li>RTX 4070 Super</li>
-        <li>64 ГБ DDR5</li>
-        <li>SSD 2 ТБ</li>
-      </ul>
-      <div class="price">От $1450</div>
-    </div>
-  </div>
-</section>
+        <div class="container hero">
 
-<section id="how">
-  <h2>Как всё будет происходить?</h2>
-  <p class="sub">Всё просто, без лишней сложности.</p>
+            <div class="reveal">
 
-  <div class="steps">
-    <div class="step">
-      <b>1. Обсудим задачу</b>
-      <p>Расскажешь, для чего нужен компьютер и сколько планируешь потратить.</p>
-    </div>
+                <div class="small-title">
+                    Помощь с выбором компьютера
+                </div>
 
-    <div class="step">
-      <b>2. Выберем детали</b>
-      <p>Я подготовлю список комплектующих и объясню, почему выбрал именно их.</p>
-    </div>
+                <h1>
+                    Давай соберём
+                    <span>хороший ПК</span>
+                    под твои задачи
+                </h1>
 
-    <div class="step">
-      <b>3. Соберём компьютер</b>
-      <p>После согласования можно переходить к сборке и проверке комплектующих.</p>
-    </div>
+                <p class="hero-text">
+                    Привет! Меня зовут Абубакр.
 
-    <div class="step">
-      <b>4. Проверим результат</b>
-      <p>Убедимся, что компьютер работает правильно и готов к использованию.</p>
-    </div>
-  </div>
-</section>
+                    Помогу выбрать комплектующие для компьютера,
+                    разобраться в характеристиках и не переплачивать
+                    за то, чем ты даже не будешь пользоваться.
 
-<section id="contact">
-  <div class="contact">
-    <h2>Есть вопросы или нужна помощь?</h2>
-    <p>
-      Напиши мне. Обсудим твои задачи, бюджет и подумаем,
-      какой компьютер лучше всего подойдёт.
-    </p>
-    <a class="btn" href="https://t.me/@Abubakr_0206">
-      Написать в Telegram
-    </a>
-  </div>
-</section>
+                    Вместе найдём подходящий вариант для игр,
+                    учёбы или работы.
+                </p>
 
-<footer>
-  © 2026 Abubakr ПК. Сделано с интересом к компьютерам ❤️
-</footer>
+                <div class="hero-buttons">
 
-</div>
+                    <a href="#contact" class="button">
+                        Обсудить компьютер →
+                    </a>
+
+                    <a href="#builds" class="button button-light">
+                        Посмотреть сборки
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-image reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=85"
+                    alt="Игровой компьютер">
+
+                <div class="image-note">
+                    Подберём всё вместе.
+
+                    <small>
+                        От процессора до корпуса.
+                        С учётом твоего бюджета.
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Сборки -->
+
+        <section id="builds">
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="small-title">
+                        Несколько примеров
+                    </div>
+
+                    <h2>Какой компьютер тебе подойдёт?</h2>
+
+                    <p>
+                        Вот три варианта для разных задач.
+                        Это не окончательные сборки — комплектующие
+                        можно изменить под твои пожелания.
+                    </p>
+
+                </div>
+
+                <div class="builds">
+
+                    <article class="build-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=80"
+                            alt="Компьютер для работы"
+                            loading="lazy">
+
+                        <div class="build-content">
+
+                            <div class="build-type">
+                                Учёба и работа
+                            </div>
+
+                            <h3>Базовый ПК</h3>
+
+                            <ul class="specs">
+                                <li>Ryzen 5 5600</li>
+                                <li>16 ГБ DDR4</li>
+                                <li>SSD 512 ГБ</li>
+                                <li>Подходящая графика под задачи</li>
+                            </ul>
+
+                            <div class="price">
+                                От $480
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="build-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80"
+                            alt="Игровой компьютер"
+                            loading="lazy">
+
+                        <div class="build-content">
+
+                            <div class="build-type">
+                                Для игр
+                            </div>
+
+                            <h3>Игровой ПК</h3>
+
+                            <ul class="specs">
+                                <li>Ryzen 5 7600</li>
+                                <li>RTX 4060 8 ГБ</li>
+                                <li>32 ГБ DDR5</li>
+                                <li>SSD 1 ТБ</li>
+                            </ul>
+
+                            <div class="price">
+                                От $890
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="build-card reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=80"
+                            alt="Мощный компьютер"
+                            loading="lazy">
+
+                        <div class="build-content">
+
+                            <div class="build-type">
+                                Монтаж и 3D
+                            </div>
+
+                            <h3>Мощный ПК</h3>
+
+                            <ul class="specs">
+                                <li>Ryzen 7 7700X</li>
+                                <li>RTX 4070 Super</li>
+                                <li>64 ГБ DDR5</li>
+                                <li>SSD 2 ТБ</li>
+                            </ul>
+
+                            <div class="price">
+                                От $1450
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <p class="notice">
+                    * Цены примерные. Перед покупкой проверим
+                    актуальную стоимость и совместимость деталей.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Как работаю -->
+
+        <section id="how">
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <div class="small-title">
+                        Всё просто
+                    </div>
+
+                    <h2>Как мы будем работать?</h2>
+
+                    <p>
+                        Не нужно разбираться во всех комплектующих.
+                        Я помогу пройти весь путь от идеи до готовой сборки.
+                    </p>
+
+                </div>
+
+                <div class="steps">
+
+                    <article class="step reveal">
+
+                        <div class="step-number">01</div>
+
+                        <h3>Обсудим твои задачи</h3>
+
+                        <p>
+                            Узнаю, для чего нужен компьютер
+                            и сколько ты планируешь потратить.
+                        </p>
+
+                    </article>
+
+                    <article class="step reveal">
+
+                        <div class="step-number">02</div>
+
+                        <h3>Выберем детали</h3>
+
+                        <p>
+                            Подберу комплектующие и объясню,
+                            почему выбрал именно их.
+                        </p>
+
+                    </article>
+
+                    <article class="step reveal">
+
+                        <div class="step-number">03</div>
+
+                        <h3>Всё проверим</h3>
+
+                        <p>
+                            Проверим совместимость процессора,
+                            видеокарты, памяти и остальных деталей.
+                        </p>
+
+                    </article>
+
+                    <article class="step reveal">
+
+                        <div class="step-number">04</div>
+
+                        <h3>Получишь результат</h3>
+
+                        <p>
+                            Отправлю готовый список комплектующих
+                            с ориентировочными ценами.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Обо мне -->
+
+        <section id="about">
+            <div class="container about">
+
+                <img
+                    class="reveal"
+                    src="https://images.unsplash.com/photo-1587202372616-b43abea06c2a?auto=format&fit=crop&w=1000&q=80"
+                    alt="Компьютерные комплектующие"
+                    loading="lazy">
+
+                <div class="about-text reveal">
+
+                    <div class="small-title">
+                        Немного обо мне
+                    </div>
+
+                    <h2>Компьютеры — это моё увлечение</h2>
+
+                    <p>
+                        Меня зовут Абубакр. Мне интересно изучать
+                        компьютерные комплектующие, сравнивать
+                        характеристики и разбираться в новых технологиях.
+                    </p>
+
+                    <p>
+                        Я решил создать этот сайт, чтобы помогать
+                        другим людям выбирать компьютеры.
+                        Не хочу советовать дорогие детали просто ради
+                        того, чтобы увеличить стоимость сборки.
+                    </p>
+
+                    <p>
+                        Если можно сэкономить без потери качества,
+                        обязательно предложу такой вариант.
+                    </p>
+
+                    <div class="advantages">
+
+                        <div class="advantage">
+                            Подбор под бюджет
+                        </div>
+
+                        <div class="advantage">
+                            Понятные объяснения
+                        </div>
+
+                        <div class="advantage">
+                            Проверка совместимости
+                        </div>
+
+                        <div class="advantage">
+                            Без навязывания покупок
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Контакты -->
+
+        <section id="contact">
+            <div class="container">
+
+                <div class="contact reveal">
+
+                    <div>
+
+                        <div class="small-title">
+                            Давай поговорим
+                        </div>
+
+                        <h2>Какой компьютер ты хочешь?</h2>
+
+                        <p>
+                            Напиши немного о своих пожеланиях,
+                            укажи бюджет и расскажи, для чего нужен ПК.
+
+                            Я получу подготовленное сообщение
+                            в Telegram, и мы сможем обсудить детали.
+                        </p>
+
+                        <p class="form-message">
+                            Форма не сохраняет твои данные
+                            на сайте и не отправляет их на сервер.
+                        </p>
+
+                    </div>
+
+                    <form class="contact-form" id="orderForm">
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Как тебя зовут?"
+                            maxlength="60"
+                            required>
+
+                        <select id="purpose" required>
+
+                            <option value="">
+                                Для чего нужен компьютер?
+                            </option>
+
+                            <option value="Игры">Игры</option>
+                            <option value="Учёба">Учёба</option>
+                            <option value="Работа">Работа</option>
+                            <option value="Монтаж видео">Монтаж видео</option>
+                            <option value="3D и другие задачи">3D и другие задачи</option>
+                            <option value="Пока не определился">Пока не определился</option>
+
+                        </select>
+
+                        <input
+                            type="text"
+                            id="budget"
+                            placeholder="Твой бюджет (например, 500–700 $)"
+                            maxlength="60"
+                            required>
+
+                        <textarea
+                            id="details"
+                            placeholder="Дополнительные пожелания (необязательно)"
+                            maxlength="500"></textarea>
+
+                        <button class="button" type="submit">
+                            Написать в Telegram →
+                        </button>
+
+                        <p class="form-message" id="formMessage">
+                            После нажатия откроется Telegram
+                            с подготовленным сообщением.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Подвал сайта -->
+
+    <footer class="container footer">
+
+        <span>
+            © <span id="year"></span> Abubakr PC.
+            Сделано с интересом к компьютерам.
+        </span>
+
+        <a href="#top">
+            Вернуться наверх ↑
+        </a>
+
+    </footer>
+
+    <script>
+        // Здесь укажи свой Telegram username без символа @.
+        const telegramUsername = "YOUR_TELEGRAM_USERNAME";
+
+        // Мобильное меню.
+        const menuButton = document.getElementById("menuButton");
+        const navLinks = document.getElementById("navLinks");
+
+        menuButton.addEventListener("click", function () {
+            const menuIsOpen = navLinks.classList.toggle("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+        });
+
+        // Закрываем меню после выбора раздела.
+        const menuLinks = navLinks.querySelectorAll("a");
+
+        menuLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        // Актуальный год в подвале.
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Плавное появление блоков при прокрутке.
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+
+        document.querySelectorAll(".reveal").forEach(function (element) {
+            observer.observe(element);
+        });
+
+        // Подготовка сообщения для Telegram.
+        const orderForm = document.getElementById("orderForm");
+        const formMessage = document.getElementById("formMessage");
+
+        orderForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (telegramUsername === "YOUR_TELEGRAM_USERNAME") {
+                formMessage.textContent =
+                    "Сначала укажи свой Telegram username в коде сайта.";
+                return;
+            }
+
+            const name = document.getElementById("name").value.trim();
+            const purpose = document.getElementById("purpose").value;
+            const budget = document.getElementById("budget").value.trim();
+            const details = document.getElementById("details").value.trim();
+
+            const message = [
+                "Здравствуйте! Хочу обсудить подбор компьютера.",
+                "",
+                "Имя: " + name,
+                "Для чего нужен ПК: " + purpose,
+                "Бюджет: " + budget,
+                details ? "Пожелания: " + details : ""
+            ].filter(Boolean).join("\n");
+
+            const telegramLink =
+                "https://t.me/" +
+                telegramUsername +
+                "?text=" +
+                encodeURIComponent(message);
+
+            window.open(
+                telegramLink,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
+    </script>
+
 </body>
 </html>
